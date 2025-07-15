@@ -1,5 +1,5 @@
 # Quick, Draw! Image Recognition
-Recognition of Quick, Draw! game doodles. The full project report is [here](https://github.com/Lexie88rus/quick-draw-image-recognition/blob/master/Quick%20Draw%20Report.pdf).
+Recognition of Quick, Draw! game doodles.
 
 ## TABLE OF CONTENTS
 * [Definition](#definition)
@@ -24,7 +24,7 @@ I chose accuracy as a metric to evaluate the results. Because of the rules of th
 ## INPUT DATA
 I chose the simplified dataset with images in .npy format. This format is the easiest to use, preprocess, and to produce by a web application.
 The examples of simplified images from the dataset:
-![images examples](https://github.com/Lexie88rus/quick-draw-image-recognition/blob/master/assets/image%20grids/eye_grid.png)
+![images examples](https://github.com/yashvid/doodleguesser/blob/main/assets/image%20grids/image%20grids/eye_grid.png)
 ## IMPLEMENTATION
 Since there is a lot of data, and I can even generate additional data by flipping and rotating the images, I decided to use deep learning approaches to classify drawings.
 The implementation consists of two parts:
@@ -35,13 +35,13 @@ I chose already preprocessed dataset with images which are already cropped and r
 
 <p>Image preprocessing example:
 
-![preprocessing](https://github.com/Lexie88rus/quick-draw-image-recognition/blob/master/assets/image%20examples/preprocessing_example.png)
+![preprocessing](https://github.com/yashvid/doodleguesser/blob/main/assets/image%20examples/image%20examples/preprocessing_example.png)
    
 ### Building the Model
 To simplify the task a little I chose only ten image classes from the initial dataset.
 My goal is to build a model, which takes 28 x 28 pixels image as an input and gives probabilities for each of the possible classes as an output. The figure below demonstrates the desired result:
 
-![result example](https://github.com/Lexie88rus/quick-draw-image-recognition/blob/master/assets/prediction_eye.png)
+![result example](https://github.com/yashvid/doodleguesser/blob/main/assets/prediction_eye.png)
 
 I started with a simple fully-connected neural network with two hidden layers built with the PyTorch library.
 The sizes of the layers are as follows:
@@ -65,7 +65,7 @@ The sizes of the layers are as follows:
 * ReLU activations,
 * output layer.
 
-<br>The result of building the model part is the buil_model.py script which allows creating, training, and saving the PyTorch deep learning model with the architecture described above. Hyperparameters, as well as the number of epochs for training, may be passed through the command line. The resulting model is loaded and used by the web application described in the next section.
+<br>The result of building the model part is the build_model.py script which allows creating, training, and saving the PyTorch deep learning model with the architecture described above. Hyperparameters, as well as the number of epochs for training, may be passed through the command line. The resulting model is loaded and used by the web application described in the next section.
 ### Building the Web App
 The purpose of the web application is to demonstrate how the model can identify the image drawn by the user of the application. The resulting application should let the user:
 1.	Draw an image;
@@ -83,7 +83,7 @@ To solve this problem I used Flask, Bootstrap, Plotly, and PIL library for image
     * Renders the results page with the message and the graph.
 The demo of the application:
 
-![app demo](https://github.com/Lexie88rus/quick-draw-image-recognition/blob/master/assets/demo/demo.gif)
+![app demo](https://github.com/yashvid/doodleguesser/blob/main/assets/demo/demo/demo.gif)
 ## REPOSITORY STRUCTURE
 The repository has the following structure:
 ```
@@ -124,13 +124,13 @@ $ python run.py
 ```
 5. Open http://0.0.0.0:3001/ in browser.
 
-## CONCLUSION
+## CONCLUSIONS
 The goal of the project was to build the application to recognize drawing based on Quick, Draw! game dataset. The solution I proposed is as follows:
 * The first part of the solution is a deep learning model to recognize images. I used a fully connected neural network with several hidden layers to achieve 85% accuracy on the test dataset. Simple convolutional neural network helped to achieve 89% accuracy on the test dataset (and the model had less variance).
 * The second part of the solution was building a web application to demonstrate the ability of the model to recognize the images.
 The most challenging part of the of this project was applying regularization techniques to reduce the variance of the model. I tried several regularization techniques such as using dropout and L2 regularization (weight decay).
 <br>The example of how the model works on drawings from the web app:
-![prediction demo](https://github.com/Lexie88rus/quick-draw-image-recognition/blob/master/assets/demo/eye_app_demo.png)
+![prediction demo](https://github.com/yashvid/doodleguesser/blob/main/assets/demo/demo/eye_app_demo.png)
 
 ### Improvement
 The model performs quite well on ten image classes from the simplified dataset, but there is a lot to improve:
